@@ -1,0 +1,118 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+}
+
+/* Logo with icon */
+#Logo {
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#Logo::before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-image: url('ASSETS/images/ToDoIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+header .ButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Container for Back and Darkmode */
+.ButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+#BackButton img{
+  width: 25px;
+  height: 25px;
+}
+
+/* Shared pill styles */
+#BackButton,
+#DarkModeButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+#BackButton:hover,
+#DarkModeButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode toggle pill */
+#DarkModeButton {
+  position: relative;
+  justify-content: center;
+}
+
+#DarkModeButton .toggle-text {
+  font-size: 14px;
+  z-index: 2;
+  font-weight: 600;
+}
+
+#DarkModeButton .toggle-circle {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: #FF69B4;
+  border-radius: 50%;
+  z-index: 1;
+  transition: left 0.25s ease;
+}
+
+/* Active dark mode */
+.darkmode #DarkModeButton {
+  background: rgba(77, 77, 77, 0.9);
+  color: white;
+}
+
+.darkmode #DarkModeButton .toggle-text {
+  color: white;
+}
+
+.darkmode #DarkModeButton .toggle-circle {
+  left: calc(100% - 38px);
+  background: #333;
+}
