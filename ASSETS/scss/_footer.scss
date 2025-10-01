@@ -1,0 +1,56 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Footer styles
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  padding: $spacing-xl 0;
+  @include flex-center;
+  
+  button {
+    @include button-size($spacing-sm $spacing-lg, $font-xs);
+  }
+}
+
+// Add button in footer
+#AddButton {
+  @include button-base;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  border-radius: $spacing-md;
+  padding: $spacing-md;
+  font-size: $font-xxl;
+  font-weight: $font-bold;
+  cursor: pointer;
+  box-shadow: $shadow-md;
+  transition: $transition-normal;
+  
+  // SVG/Icon styling for add button
+  svg, img {
+    transition: $transition-normal;
+  }
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+  
+  .darkmode & {
+    background-color: rgba(77, 77, 77, 0.9);
+    
+    // Make sure any SVGs in the add button get inverted in dark mode
+    svg, img {
+      filter: invert(1) brightness(0.9);
+    }
+    
+    &:hover {
+      background-color: rgba(77, 77, 77, 1);
+      transform: translateY(-2px);
+      box-shadow: $shadow-xl;
+    }
+  }
+}

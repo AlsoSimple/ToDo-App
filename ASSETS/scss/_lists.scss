@@ -1,0 +1,83 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// List container styles
+#listContainer {
+  // No horizontal padding - handled by #mainContainer
+  
+  // List view specific styles
+  &.list-view {
+    .list-card {
+      @include card-hover;
+    }
+  }
+  
+  // Item view specific styles
+  &.item-view {
+    .item-card {
+      transition: $transition-normal;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.95);
+        
+        .darkmode & {
+          background: rgba(95, 95, 95, 0.95);
+        }
+      }
+    }
+  }
+}
+
+// Dropdown styles for lists and items
+.dropdown {
+  @include dropdown-container;
+}
+
+.dropdown-content {
+  @include dropdown-content;
+  
+  div {
+    @include dropdown-item;
+    @include flex-center;
+    gap: $spacing-xs;
+    
+    // Icon styling
+    img, svg {
+      width: 28px;
+      height: 28px;
+      transition: $transition-normal;
+    }
+    
+    // Dark mode icon fixes
+    .darkmode & {
+      img, svg {
+        filter: invert(1) brightness(0.9);
+      }
+    }
+  }
+}
+
+// List title styles
+.list-title {
+  @include text-heading($font-xl, $font-bold);
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  cursor: pointer;
+  
+  &:hover {
+    color: var(--accent-color);
+  }
+}
+
+// Empty state styles
+.empty-state {
+  text-align: center;
+  color: var(--muted-text);
+  font-style: italic;
+  margin: $spacing-xl 0;
+  
+  p {
+    margin: $spacing-md 0;
+    font-size: $font-lg;
+  }
+}

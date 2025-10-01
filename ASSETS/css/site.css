@@ -1,0 +1,1030 @@
+:root {
+  --primary-color: #FFC2CE;
+  --secondary-color: #FFECFD;
+  --text-color: #000000;
+  --dropdown-bg: #ffffff;
+  --dropdown-text: #000000;
+  --dropdown-border: #ddd;
+  --dropdown-hover: #f8f8f8;
+  --accent-color: #FF69B4;
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --muted-text: #666;
+  --border-color: #ddd;
+}
+
+.darkmode {
+  --primary-color: #262525;
+  --text-color: #ffffff;
+  --secondary-color: #564455;
+  --dropdown-bg: #5F5F5F;
+  --dropdown-text: #ffffff;
+  --dropdown-border: #555;
+  --dropdown-hover: #404040;
+  --card-bg: #5F5F5F;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --muted-text: #ccc;
+  --border-color: #555;
+}
+
+@-webkit-keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slideUp {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--secondary-color)), to(var(--primary-color)));
+  background: linear-gradient(180deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  padding-bottom: 24px;
+}
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+.container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+#mainContainer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  padding: 0 24px;
+}
+#mainContainer::-webkit-scrollbar {
+  width: 8px;
+}
+#mainContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+#mainContainer::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: inherit;
+}
+
+.darkmode .list-card, .darkmode .item-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+.darkmode svg {
+  -webkit-filter: invert(1) brightness(0.8);
+          filter: invert(1) brightness(0.8);
+}
+.darkmode img {
+  -webkit-filter: brightness(1.1);
+          filter: brightness(1.1);
+}
+.darkmode button img, .darkmode button svg {
+  -webkit-filter: invert(1) brightness(0.9);
+          filter: invert(1) brightness(0.9);
+}
+.darkmode #BackButton img, .darkmode #BackButton svg {
+  -webkit-filter: invert(1) brightness(1.2);
+          filter: invert(1) brightness(1.2);
+}
+.darkmode .dropbtn img, .darkmode .dropbtn svg {
+  -webkit-filter: invert(1) brightness(1.1);
+          filter: invert(1) brightness(1.1);
+}
+
+header {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  z-index: 1000;
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+  padding: 60px 24px 30px 24px;
+}
+
+#Logo {
+  margin: 0 0 24px 0;
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+#Logo::before {
+  content: "";
+  width: 48px;
+  height: 48px;
+  background-image: url("../images/ToDoIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+header .ButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+}
+
+.ButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+button,
+#BackButton,
+#DarkModeButton,
+#AddButton {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#BackButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  backdrop-filter: blur(10px);
+  border: none;
+}
+#BackButton img {
+  width: 25px;
+  height: 25px;
+}
+#BackButton:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.darkmode #BackButton {
+  background: rgba(77, 77, 77, 0.9);
+  color: white;
+}
+
+#DarkModeButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  border: none;
+}
+#DarkModeButton:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+#DarkModeButton .toggle-text {
+  font-size: 14px;
+  z-index: 2;
+  font-weight: 600;
+}
+#DarkModeButton .toggle-circle {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  z-index: 1;
+  -webkit-transition: left 0.25s ease;
+  transition: left 0.25s ease;
+}
+.darkmode #DarkModeButton {
+  background: rgba(77, 77, 77, 0.9);
+  color: white;
+}
+.darkmode #DarkModeButton .toggle-text {
+  color: white;
+}
+.darkmode #DarkModeButton .toggle-circle {
+  left: calc(100% - 38px);
+  background: #333;
+}
+
+#AddButton {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--text-color);
+  padding: 16px;
+  font-size: 32px;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+#AddButton:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.darkmode #AddButton {
+  background-color: rgba(95, 95, 95, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.darkmode #AddButton:hover {
+  background-color: rgb(95, 95, 95);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.dropbtn {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: none;
+  padding: 8px;
+  font-size: 24px;
+  color: #666;
+}
+.dropbtn img, .dropbtn svg {
+  width: 24px;
+  height: 24px;
+}
+.dropbtn svg, .dropbtn img {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  opacity: 0.7;
+}
+.darkmode .dropbtn {
+  color: #ccc;
+}
+
+button svg, button img {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+button[id=BackButton] svg, button[id=BackButton] img {
+  opacity: 0.6;
+}
+
+.form-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.form-buttons button {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 14px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.form-buttons button.confirm-btn {
+  background-color: var(--success-color);
+  color: white;
+}
+.form-buttons button.confirm-btn:hover {
+  background-color: var(--success-hover);
+}
+.form-buttons button.cancel-btn {
+  background-color: var(--muted-text);
+  color: white;
+}
+.form-buttons button.cancel-btn:hover {
+  background-color: #555;
+}
+
+.edit-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+.edit-buttons button {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  min-width: 32px;
+  z-index: 1001;
+  position: relative;
+}
+
+.edit-confirm-btn {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: var(--success-color);
+  color: white;
+  font-weight: 700;
+}
+.edit-confirm-btn:hover {
+  background-color: var(--success-hover);
+}
+
+.edit-cancel-btn {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: var(--muted-text);
+  color: white;
+  font-weight: 700;
+}
+.edit-cancel-btn:hover {
+  background-color: #555;
+}
+
+.list-card, .item-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  position: relative;
+  padding: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 16px 0 24px 0;
+  z-index: 1;
+}
+.list-card:first-child, .item-card:first-child {
+  margin-top: 0;
+}
+.list-card:last-child, .item-card:last-child {
+  margin-bottom: 30px;
+}
+.list-card h2, .item-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.list-card:has(.dropdown-content[style*=block]), .item-card:has(.dropdown-content[style*=block]) {
+  z-index: 1002;
+}
+
+.list-card {
+  cursor: pointer;
+}
+.list-card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.item-card p {
+  margin: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: var(--muted-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+.item-card.completed {
+  opacity: 0.6;
+}
+.item-card.completed h2, .item-card.completed p {
+  text-decoration: line-through;
+}
+.item-card.editing .item-content {
+  display: none;
+}
+.item-card.editing .edit-mode {
+  display: block;
+}
+
+.edit-mode {
+  display: none;
+  width: 100%;
+}
+.edit-mode input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+.edit-mode input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.edit-mode textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text-color);
+  min-height: 60px;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 12px;
+}
+.edit-mode textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.item-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 8px;
+}
+
+#listContainer.list-view .list-card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+#listContainer.item-view .item-card {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+#listContainer.item-view .item-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+.darkmode #listContainer.item-view .item-card:hover {
+  background: rgba(95, 95, 95, 0.95);
+}
+
+.dropdown {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+  z-index: 1003;
+}
+.dropdown-content div {
+  background: var(--dropdown-bg);
+  color: var(--dropdown-text);
+  text-align: center;
+  padding: 16px;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+}
+.dropdown-content div:hover {
+  background: var(--dropdown-hover);
+}
+.dropdown-content div + .dropdown-content div {
+  border-top: 1px solid var(--dropdown-border);
+}
+.dropdown-content div img, .dropdown-content div svg {
+  width: 28px;
+  height: 28px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.darkmode .dropdown-content div img, .darkmode .dropdown-content div svg {
+  -webkit-filter: invert(1) brightness(0.9);
+          filter: invert(1) brightness(0.9);
+}
+
+.list-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: inherit;
+  text-align: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+.list-title:hover {
+  color: var(--accent-color);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted-text);
+  font-style: italic;
+  margin: 30px 0;
+}
+.empty-state p {
+  margin: 16px 0;
+  font-size: 18px;
+}
+
+#createListForm, #createItemForm {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 999;
+}
+.darkmode #createListForm, .darkmode #createItemForm {
+  background-color: rgba(77, 77, 77, 0.95);
+  color: white;
+}
+#createListForm h3, #createItemForm h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: inherit;
+  margin-bottom: 16px;
+  text-align: center;
+}
+#createListForm input, #createListForm textarea, #createItemForm input, #createItemForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+#createListForm input:focus, #createListForm textarea:focus, #createItemForm input:focus, #createItemForm textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+#createListForm input::-webkit-input-placeholder, #createListForm textarea::-webkit-input-placeholder, #createItemForm input::-webkit-input-placeholder, #createItemForm textarea::-webkit-input-placeholder {
+  color: var(--muted-text);
+}
+#createListForm input::-moz-placeholder, #createListForm textarea::-moz-placeholder, #createItemForm input::-moz-placeholder, #createItemForm textarea::-moz-placeholder {
+  color: var(--muted-text);
+}
+#createListForm input:-ms-input-placeholder, #createListForm textarea:-ms-input-placeholder, #createItemForm input:-ms-input-placeholder, #createItemForm textarea:-ms-input-placeholder {
+  color: var(--muted-text);
+}
+#createListForm input::-ms-input-placeholder, #createListForm textarea::-ms-input-placeholder, #createItemForm input::-ms-input-placeholder, #createItemForm textarea::-ms-input-placeholder {
+  color: var(--muted-text);
+}
+#createListForm input::placeholder, #createListForm textarea::placeholder, #createItemForm input::placeholder, #createItemForm textarea::placeholder {
+  color: var(--muted-text);
+}
+#createListForm textarea, #createItemForm textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.inline-form {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  margin: 16px 0;
+  padding: 16px;
+}
+.inline-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+.inline-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.inline-form .form-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
+.inline-form .form-buttons button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.form-error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+.form-success {
+  color: var(--success-color);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  -webkit-box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
+          box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
+}
+
+.edit-item-input {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+.darkmode .edit-item-input {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+#createListForm .edit-item-input {
+  font-size: 18px;
+  font-weight: 600;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 16px;
+  height: 41px;
+  line-height: 1.2;
+  padding: 8px 12px;
+}
+
+#createItemForm .edit-item-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.darkmode #createListForm .edit-item-input,
+.darkmode #createItemForm .edit-item-input {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+#createListForm .dropdown,
+#createItemForm .dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+
+.create-form-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.create-form-icon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.create-form-icon.cancel-icon {
+  opacity: 0.7;
+}
+.create-form-icon.cancel-icon:hover {
+  opacity: 1;
+}
+.darkmode .create-form-icon {
+  -webkit-filter: invert(1) brightness(0.9);
+          filter: invert(1) brightness(0.9);
+}
+
+footer {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  padding: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+footer button {
+  padding: 12px 24px;
+  font-size: 12px;
+}
+
+#AddButton {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  font-weight: 600;
+  border-radius: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+}
+#AddButton svg, #AddButton img {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+#AddButton:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.darkmode #AddButton {
+  background-color: rgba(77, 77, 77, 0.9);
+}
+.darkmode #AddButton svg, .darkmode #AddButton img {
+  -webkit-filter: invert(1) brightness(0.9);
+          filter: invert(1) brightness(0.9);
+}
+.darkmode #AddButton:hover {
+  background-color: rgb(77, 77, 77);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}/*# sourceMappingURL=site.css.map */

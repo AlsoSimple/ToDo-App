@@ -1,0 +1,234 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'variables' as *;
+
+// Button Mixins
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  transition: $transition-normal;
+  font-weight: $font-semibold;
+  border-radius: $radius-lg;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@mixin button-size($padding: $button-padding, $font-size: $font-md) {
+  padding: $padding;
+  font-size: $font-size;
+}
+
+@mixin button-colors($bg, $text, $hover-bg: null) {
+  background-color: $bg;
+  color: $text;
+  
+  &:hover {
+    @if $hover-bg {
+      background-color: $hover-bg;
+    } @else {
+      // Only darken if it's a real color, not a CSS variable
+      @if type-of($bg) == color {
+        background-color: color.scale($bg, $lightness: -10%);
+      } @else {
+        // For CSS variables, just use a filter to darken
+        filter: brightness(0.9);
+      }
+    }
+  }
+}
+
+// Card Mixins
+@mixin card-base {
+  background: var(--card-bg);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  backdrop-filter: blur(10px);
+  transition: $transition-normal;
+  position: relative;
+}
+
+@mixin card-padding($padding: $card-padding) {
+  padding: $padding;
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Flex Layout Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row-gap($gap: $spacing-md) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+// Dropdown Mixins
+@mixin dropdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@mixin dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: $spacing-xs;
+  background: transparent;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  min-width: 120px;
+  z-index: $z-dropdown;
+}
+
+@mixin dropdown-item {
+  background: var(--dropdown-bg);
+  color: var(--dropdown-text);
+  text-align: center;
+  padding: $spacing-md;
+  cursor: pointer;
+  transition: $transition-normal;
+  
+  &:hover {
+    background: var(--dropdown-hover);
+  }
+  
+  & + & {
+    border-top: 1px solid var(--dropdown-border);
+  }
+}
+
+// Form Mixins
+@mixin form-base {
+  background: var(--card-bg);
+  border-radius: $radius-lg;
+  padding: $form-padding;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-lg;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-sm;
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  font-size: $font-md;
+  background: transparent;
+  color: var(--text-color);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+}
+
+// Text Styles
+@mixin text-heading($size: $font-lg, $weight: $font-semibold) {
+  font-size: $size;
+  font-weight: $weight;
+  margin: 0;
+  color: inherit;
+}
+
+@mixin text-muted {
+  color: var(--muted-text);
+  font-size: $font-sm;
+}
+
+// Animation Mixins
+@mixin fade-in($duration: $transition-normal) {
+  opacity: 0;
+  animation: fadeIn $duration ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin slide-up($distance: 20px, $duration: $transition-normal) {
+  transform: translateY($distance);
+  opacity: 0;
+  animation: slideUp $duration ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Responsive Mixins
+@mixin mobile {
+  @media (max-width: #{$mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// Scrollbar Mixins
+@mixin custom-scrollbar($width: 8px, $track-color: transparent, $thumb-color: rgba(0, 0, 0, 0.3)) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: math.div($width, 2);
+  }
+}
+
+// Icon Mixins
+@mixin icon-button($size: 24px) {
+  @include button-base;
+  background: none;
+  padding: $spacing-xs;
+  font-size: $size;
+  
+  img, svg {
+    width: $size;
+    height: $size;
+  }
+}

@@ -1,0 +1,72 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Base styles - body, html, and general layout
+body {
+  background: linear-gradient(180deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  @include flex-column;
+}
+
+// Main container
+.container {
+  flex: 1;
+  overflow-y: auto;
+  @include custom-scrollbar;
+  padding-bottom: $spacing-lg;
+}
+
+// Main content container
+#mainContainer {
+  flex: 1;
+  overflow-y: auto;
+  @include custom-scrollbar;
+  padding: 0 $spacing-lg; // Add horizontal padding
+}
+
+// General reset and utilities
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: inherit;
+}
+
+// Dark mode utilities
+.darkmode {
+  .list-card, .item-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
+  
+  // Global SVG theming for dark mode - use invert to make black icons white
+  svg {
+    filter: invert(1) brightness(0.8);
+  }
+  
+  img {
+    filter: brightness(1.1);
+  }
+  
+  // Specific icon adjustments for buttons
+  button img, button svg {
+    filter: invert(1) brightness(0.9);
+  }
+  
+  // Back button specific - make it more visible
+  #BackButton img, #BackButton svg {
+    filter: invert(1) brightness(1.2);
+  }
+  
+  // Dropdown button specific
+  .dropbtn img, .dropbtn svg {
+    filter: invert(1) brightness(1.1);
+  }
+}

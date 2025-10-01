@@ -1,0 +1,121 @@
+// Color Variables
+$primary-color: #FFC2CE;
+$secondary-color: #FFECFD;
+$text-color: #000000;
+$accent-color: #FF69B4;
+$success-color: #28a745;
+$success-hover: #218838;
+
+// Light Theme Colors
+$light-card-bg: rgba(255, 255, 255, 0.9);
+$light-dropdown-bg: #ffffff;
+$light-dropdown-text: #000000;
+$light-dropdown-border: #ddd;
+$light-dropdown-hover: #f8f8f8;
+$light-muted-text: #666;
+$light-border-color: #ddd;
+$light-card-shadow: rgba(0, 0, 0, 0.1);
+
+// Dark Theme Colors
+$dark-primary-color: #262525;
+$dark-secondary-color: #564455;
+$dark-text-color: #ffffff;
+$dark-card-bg: #5F5F5F;
+$dark-dropdown-bg: #5F5F5F;
+$dark-dropdown-text: #ffffff;
+$dark-dropdown-border: #555;
+$dark-dropdown-hover: #404040;
+$dark-muted-text: #ccc;
+$dark-border-color: #555;
+$dark-card-shadow: rgba(0, 0, 0, 0.3);
+
+// Spacing Variables
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 30px;
+$spacing-xxl: 60px;
+
+// Font Sizes
+$font-xs: 12px;
+$font-sm: 14px;
+$font-md: 16px;
+$font-lg: 18px;
+$font-xl: 24px;
+$font-xxl: 32px;
+$font-hero: 42px;
+
+// Font Weights
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+// Z-index values
+$z-base: 1;
+$z-dropdown: 1003;
+$z-modal: 1000;
+$z-header: 1000;
+$z-active-card: 1002;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.2s ease;
+$transition-slow: 0.3s ease;
+$transition-bounce: 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// Component Specific Variables
+$header-padding: $spacing-xxl $spacing-lg $spacing-xl $spacing-lg;
+$card-padding: $spacing-lg;
+$button-padding: $spacing-sm $spacing-lg;
+$form-padding: $spacing-lg;
+
+// CSS Custom Properties (for theme switching)
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --text-color: #{$text-color};
+  --dropdown-bg: #{$light-dropdown-bg};
+  --dropdown-text: #{$light-dropdown-text};
+  --dropdown-border: #{$light-dropdown-border};
+  --dropdown-hover: #{$light-dropdown-hover};
+  --accent-color: #{$accent-color};
+  --success-color: #{$success-color};
+  --success-hover: #{$success-hover};
+  --card-bg: #{$light-card-bg};
+  --card-shadow: #{$light-card-shadow};
+  --muted-text: #{$light-muted-text};
+  --border-color: #{$light-border-color};
+}
+
+.darkmode {
+  --primary-color: #{$dark-primary-color};
+  --text-color: #{$dark-text-color};
+  --secondary-color: #{$dark-secondary-color};
+  --dropdown-bg: #{$dark-dropdown-bg};
+  --dropdown-text: #{$dark-dropdown-text};
+  --dropdown-border: #{$dark-dropdown-border};
+  --dropdown-hover: #{$dark-dropdown-hover};
+  --card-bg: #{$dark-card-bg};
+  --card-shadow: #{$dark-card-shadow};
+  --muted-text: #{$dark-muted-text};
+  --border-color: #{$dark-border-color};
+}

@@ -1,0 +1,225 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Button base styles using mixins
+button, 
+#BackButton, 
+#DarkModeButton, 
+#AddButton {
+  @include button-base;
+}
+
+// Specific button types
+#BackButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: $font-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: $shadow-md;
+  transition: $transition-normal;
+  backdrop-filter: blur(10px);
+  border: none;
+  
+  img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-lg;
+  }
+  
+  .darkmode & {
+    background: rgba(77, 77, 77, 0.9);
+    color: white;
+  }
+}
+
+#DarkModeButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: $font-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: $shadow-md;
+  transition: $transition-normal;
+  backdrop-filter: blur(10px);
+  position: relative;
+  border: none;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-lg;
+  }
+  
+  .toggle-text {
+    font-size: $font-sm;
+    z-index: 2;
+    font-weight: $font-semibold;
+  }
+  
+  .toggle-circle {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    z-index: 1;
+    transition: left 0.25s ease;
+  }
+  
+  .darkmode & {
+    background: rgba(77, 77, 77, 0.9);
+    color: white;
+    
+    .toggle-text {
+      color: white;
+    }
+    
+    .toggle-circle {
+      left: calc(100% - 38px);
+      background: #333;
+    }
+  }
+}
+
+// Add Button (Footer)
+#AddButton {
+  @include button-base;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--text-color);
+  padding: $spacing-md;
+  font-size: $font-xxl;
+  border-radius: $spacing-md;
+  box-shadow: $shadow-lg;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: $shadow-xl;
+  }
+  
+  .darkmode & {
+    background-color: rgba(95, 95, 95, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      background-color: rgba(95, 95, 95, 1);
+      transform: translateY(-2px);
+      box-shadow: $shadow-xl;
+    }
+  }
+}
+
+// Dropdown button
+.dropbtn {
+  @include icon-button($font-xl);
+  color: #666;
+  
+  // Ensure SVGs inherit color
+  svg, img {
+    transition: $transition-normal;
+    opacity: 0.7;
+  }
+  
+  .darkmode & {
+    color: #ccc;
+  }
+}
+
+// General SVG and icon theming
+button {
+  svg, img {
+    transition: $transition-normal;
+  }
+  
+  // Back button specific - make it more subtle in light mode
+  &[id="BackButton"] {
+    svg, img {
+      opacity: 0.6;
+    }
+  }
+}
+
+// Form buttons
+.form-buttons {
+  @include flex-row-gap($spacing-sm);
+  margin-top: $spacing-md;
+  
+  button {
+    @include button-base;
+    @include button-size($spacing-sm $spacing-md, $font-sm);
+    flex: 1;
+    
+    &.confirm-btn {
+      background-color: var(--success-color);
+      color: white;
+      
+      &:hover {
+        background-color: var(--success-hover);
+      }
+    }
+    
+    &.cancel-btn {
+      background-color: var(--muted-text);
+      color: white;
+      
+      &:hover {
+        background-color: #555;
+      }
+    }
+  }
+}
+
+// Edit mode buttons
+.edit-buttons {
+  @include flex-row-gap($spacing-xs);
+  
+  button {
+    @include button-base;
+    min-width: 32px;
+    z-index: $z-base + 1000;
+    position: relative;
+  }
+}
+
+.edit-confirm-btn {
+  @include button-size($spacing-xs $spacing-sm, $font-md);
+  background-color: var(--success-color);
+  color: white;
+  font-weight: $font-bold;
+  
+  &:hover {
+    background-color: var(--success-hover);
+  }
+}
+
+.edit-cancel-btn {
+  @include button-size($spacing-xs $spacing-sm, $font-md);
+  background-color: var(--muted-text);
+  color: white;
+  font-weight: $font-bold;
+  
+  &:hover {
+    background-color: #555;
+  }
+}

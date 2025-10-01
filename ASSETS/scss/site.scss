@@ -1,0 +1,12 @@
+// Main SCSS file - uses modern @use syntax
+// Load order: variables first, then mixins, then partials
+
+@use 'variables';
+@use 'mixins';
+@use 'base';
+@use 'header';
+@use 'buttons';
+@use 'cards';
+@use 'lists';
+@use 'forms';
+@use 'footer';

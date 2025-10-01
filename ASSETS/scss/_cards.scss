@@ -1,0 +1,100 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Card base styles
+.list-card, .item-card {
+  @include card-base;
+  @include card-padding;
+  @include flex-between;
+  margin: $spacing-md 0 $spacing-lg 0; // Top and bottom margin only
+  z-index: $z-base;
+  
+  // First card shouldn't have top margin
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  // Last card should have some bottom margin
+  &:last-child {
+    margin-bottom: $spacing-xl;
+  }
+  
+  h2 {
+    @include text-heading($font-lg, $font-semibold);
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  // When dropdown is active, increase z-index
+  &:has(.dropdown-content[style*="block"]) {
+    z-index: $z-active-card;
+  }
+}
+
+// List card specific styles
+.list-card {
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Item card specific styles
+.item-card {
+  p {
+    margin: 0;
+    flex: 1;
+    color: var(--muted-text);
+    font-size: $font-sm;
+    cursor: pointer;
+  }
+  
+  // Completed item styles
+  &.completed {
+    opacity: 0.6;
+    
+    h2, p {
+      text-decoration: line-through;
+    }
+  }
+  
+  // Edit mode styles
+  &.editing {
+    .item-content {
+      display: none;
+    }
+    
+    .edit-mode {
+      display: block;
+    }
+  }
+}
+
+// Edit mode content
+.edit-mode {
+  display: none;
+  width: 100%;
+  
+  input {
+    @include input-base;
+    margin-bottom: $spacing-sm;
+  }
+  
+  textarea {
+    @include input-base;
+    min-height: 60px;
+    resize: vertical;
+    font-family: inherit;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// Item content wrapper
+.item-content {
+  @include flex-column;
+  flex: 1;
+  align-items: flex-start;
+  gap: $spacing-xs;
+}

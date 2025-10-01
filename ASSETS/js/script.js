@@ -84,7 +84,7 @@ function listClickCallback(action, index) {
       break;
 
     case "deleteList":
-      // (Add deletion here if needed)
+      deleteList(index);
       break;
 
     default:
@@ -162,7 +162,7 @@ function editList(listIndex) {
   h2.outerHTML = `<input type="text" id="editListInput-${listIndex}" value="${currentTitle}" class="edit-list-input" onkeypress="handleEditListKeypress(event, ${listIndex})">`;
 
   const dropdown = listCard.querySelector(".dropdown");
-  dropdown.outerHTML = `<div class="edit-confirm-btn" onclick="confirmEditList(${listIndex})">✓</div>`;
+  dropdown.outerHTML = `<img src="ASSETS/svg/createButton.svg" alt="Confirm" onclick="confirmEditList(${listIndex})" class="create-form-icon" />`;
 
   const input = document.getElementById(`editListInput-${listIndex}`);
   input.focus();
@@ -190,6 +190,15 @@ function confirmEditList(listIndex) {
   BuildListView();
 }
 
+function deleteList(listIndex) {
+  const lists = readLists();
+  if (lists[listIndex]) {
+    lists.splice(listIndex, 1);
+    saveData(lists);
+    BuildListView();
+  }
+}
+
 
 // ---------- Edit/Delete/Toggle Items ----------
 
@@ -214,7 +223,7 @@ function editItem(listIndex, itemIndex) {
   itemText.outerHTML = `<input type="text" id="editItemInput-${itemIndex}" value="${currentText}" class="edit-item-input" onkeypress="handleEditItemKeypress(event, ${listIndex}, ${itemIndex})">`;
 
   const dropdown = itemCard.querySelector(".dropdown");
-  dropdown.outerHTML = `<div class="edit-confirm-btn" onclick="confirmEditItem(${listIndex}, ${itemIndex})">✓</div>`;
+  dropdown.outerHTML = `<img src="ASSETS/svg/createButton.svg" alt="Confirm" onclick="confirmEditItem(${listIndex}, ${itemIndex})" class="create-form-icon" />`;
 
   const input = document.getElementById(`editItemInput-${itemIndex}`);
   input.focus();
@@ -224,6 +233,18 @@ function editItem(listIndex, itemIndex) {
 function handleEditItemKeypress(event, listIndex, itemIndex) {
   if (event.key === "Enter") {
     confirmEditItem(listIndex, itemIndex);
+  }
+}
+
+function handleNewListKeypress(event) {
+  if (event.key === "Enter") {
+    submitNewList(event);
+  }
+}
+
+function handleNewItemKeypress(event) {
+  if (event.key === "Enter") {
+    submitNewItem(event);
   }
 }
 
@@ -490,16 +511,13 @@ function createNewList() {
   if (document.getElementById("createListForm")) return;
 
   const html = `
-    <form id="createListForm" onsubmit="submitNewList(event)">
-      <h2>Create New List</h2>
-      <input type="text" id="newListInput" placeholder="Enter list name..." required>
-      <div id="CreateButtonWrapper">
-        <div id="CreateButton" onclick="submitNewList(event)">
-          <img src="ASSETS/svg/CreateButton.svg" alt="Create" />
-        </div>
-        <div id="CancelButton" onclick="this.parentElement.parentElement.remove()">Cancel</div>
+    <div class="list-card" id="createListForm">
+      <input type="text" id="newListInput" placeholder="Enter list name..." required class="edit-item-input" onkeypress="handleNewListKeypress(event)">
+      <div class="dropdown">
+        <img src="ASSETS/svg/createButton.svg" alt="Create" onclick="submitNewList(event)" class="create-form-icon" />
+        <img src="ASSETS/svg/xmark-solid-full.svg" alt="Cancel" onclick="document.getElementById('createListForm').remove()" class="create-form-icon cancel-icon" />
       </div>
-    </form>
+    </div>
   `;
   main.insertAdjacentHTML("afterbegin", html);
   document.getElementById("newListInput").focus();
@@ -512,16 +530,16 @@ function createNewItem() {
   if (document.getElementById("createItemForm")) return;
 
   const createItemForm = `
-    <form id="createItemForm" onsubmit="submitNewItem(event)">
-      <h3>Add New Item</h3>
-      <input type="text" id="newItemInput" placeholder="Enter item text..." required>
-      <div id="CreateButtonWrapper">
-        <div id="CreateButton" onclick="submitNewItem(event)">
-          <img src="ASSETS/svg/CreateButton.svg" alt="Create" />
-        </div>
-        <div id="CancelButton" onclick="document.getElementById('createItemForm').remove()">Cancel</div>
+    <div class="item-card" id="createItemForm">
+      <div class="item-content">
+        <input type="checkbox" class="item-checkbox" disabled />
+        <input type="text" id="newItemInput" placeholder="Enter item text..." required class="edit-item-input" onkeypress="handleNewItemKeypress(event)">
       </div>
-    </form>
+      <div class="dropdown">
+        <img src="ASSETS/svg/createButton.svg" alt="Create" onclick="submitNewItem(event)" class="create-form-icon" />
+        <img src="ASSETS/svg/xmark-solid-full.svg" alt="Cancel" onclick="document.getElementById('createItemForm').remove()" class="create-form-icon cancel-icon" />
+      </div>
+    </div>
   `;
 
   const itemsContainer = view.querySelector(".items-container");

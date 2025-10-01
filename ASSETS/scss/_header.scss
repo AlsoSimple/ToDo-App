@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Header styles
+header {
+  flex-shrink: 0;
+  z-index: $z-header;
+  background: transparent;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $header-padding;
+}
+
+// Logo with icon
+#Logo {
+  margin: 0 0 $spacing-lg 0;
+  @include text-heading($font-hero, $font-bold);
+  @include flex-row-gap($spacing-lg);
+  
+  &::before {
+    content: '';
+    width: 48px;
+    height: 48px;
+    background-image: url('../images/ToDoIcon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+// Button container for header
+header .ButtonContainer {
+  @include flex-row-gap($spacing-md);
+}
+
+.ButtonContainer {
+  @include flex-between;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: $spacing-md;
+}

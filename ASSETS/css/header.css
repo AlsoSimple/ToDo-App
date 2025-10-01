@@ -1,31 +1,30 @@
 header {
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
   z-index: 1000;
   background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 20px 16px;
+  gap: 24px;
+  padding: 60px 24px 30px 24px;
 }
 
 /* Logo with icon */
 #Logo {
-  margin: 0 0 12px 0;
-  font-size: 28px;
+  margin: 0 0 18px 0;
+  font-size: 42px;
   font-weight: 700;
   color: var(--text-color);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
 }
 
 #Logo::before {
   content: '';
-  width: 32px;
-  height: 32px;
-  background-image: url('ASSETS/images/ToDoIcon.png');
+  width: 48px;
+  height: 48px;
+  background-image: url('../images/ToDoIcon.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

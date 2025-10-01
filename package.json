@@ -1,0 +1,13 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "A simple ToDo application with SCSS styling",
+  "scripts": {
+    "build-css": "sass ASSETS/scss/site.scss ASSETS/css/site.css --style compressed",
+    "watch-css": "sass ASSETS/scss/site.scss ASSETS/css/site.css --watch --style compressed",
+    "dev": "npm run watch-css"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+}
